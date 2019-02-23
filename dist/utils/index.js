@@ -47,6 +47,8 @@ var _rimraf = require('rimraf');
 
 var _rimraf2 = _interopRequireDefault(_rimraf);
 
+var _package = require('../../package');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const env = process.env;
@@ -60,7 +62,7 @@ const getReleaseSource = exports.getReleaseSource = () => (0, _requestPromise2.d
   uri: `${repoBaseUrl}/maven-metadata.xml`
 }).then(response => {
   let releaseRegularExp = new RegExp('<release>(.+)</release>');
-  let releaseVersion = response.match(releaseRegularExp)[1];
+  let releaseVersion = _package.flyway.version ? _package.flyway.version : response.match(releaseRegularExp)[1];
 
   let sources = {
     'win32': {

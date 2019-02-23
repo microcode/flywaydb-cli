@@ -9,6 +9,7 @@ import extractZip from 'extract-zip'
 import { spawn } from 'child_process'
 import filesize from 'filesize'
 import rimraf from 'rimraf'
+import { flyway } from '../../package'
 const env = process.env
 
 const repoBaseUrl = 'https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline'
@@ -21,7 +22,7 @@ export const getReleaseSource = () => rp({
 })
 .then((response) => {
   let releaseRegularExp = new RegExp('<release>(.+)</release>')
-  let releaseVersion = response.match(releaseRegularExp)[1]
+  let releaseVersion = flyway.version ? flyway.version : response.match(releaseRegularExp)[1]
 
   let sources = {
     'win32': {

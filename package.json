@@ -1,6 +1,6 @@
 {
   "name": "@microcode/flywaydb-cli",
-  "version": "0.5.3",
+  "version": "0.5.3-5.2.4",
   "description": "Install latest flywaydb-cli as a node module",
   "main": "dist/installer.js",
   "bin": {
@@ -57,5 +57,8 @@
     "presets": [
       "@ava/stage-4"
     ]
+  },
+  "flyway": {
+    "version": "5.2.4"
   }
 }
